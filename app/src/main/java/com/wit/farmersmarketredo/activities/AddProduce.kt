@@ -16,6 +16,7 @@ class AddProduce : AppCompatActivity() {
 
     private lateinit var donateLayout : ActivityAddproduceBinding
     lateinit var app: FarmersApp
+    var totalDonated = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +34,6 @@ class AddProduce : AppCompatActivity() {
             //Display the newly selected number to paymentAmount
             donateLayout.paymentAmount.setText("$newVal")
         }
-        var totalDonated = 0
 
         donateLayout.donateButton.setOnClickListener {
             val amount = if (donateLayout.paymentAmount.text.isNotEmpty())
@@ -50,6 +50,13 @@ class AddProduce : AppCompatActivity() {
                 Timber.i("Total Donated so far $totalDonated")
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        totalDonated = app.producesStore.findAll().sumOf { it.amount }
+        donateLayout.progressBar.progress = totalDonated
+        donateLayout.totalSoFar.text = "$$totalDonated"
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
