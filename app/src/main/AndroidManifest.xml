@@ -11,6 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FarmersMarketredo">
         <activity
+            android:name=".activities.Home"
+            android:exported="true" />
+        <activity
             android:name=".activities.List"
             android:exported="false" />
         <activity

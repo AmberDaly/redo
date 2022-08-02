@@ -3,9 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/amber/AndroidStudioProjects/FarmersMarketredo/app/src/main/res/layout/activity_home.xml" value="0.14351851851851852" />
         <entry key="..\:/Users/amber/AndroidStudioProjects/FarmersMarketredo/app/src/main/res/layout/activity_list.xml" value="0.1" />
         <entry key="..\:/Users/amber/AndroidStudioProjects/FarmersMarketredo/app/src/main/res/layout/activity_main.xml" value="0.358695652173913" />
         <entry key="..\:/Users/amber/AndroidStudioProjects/FarmersMarketredo/app/src/main/res/layout/card_produce.xml" value="0.1" />
+        <entry key="..\:/Users/amber/AndroidStudioProjects/FarmersMarketredo/app/src/main/res/layout/fragment_add_produce.xml" value="0.14351851851851852" />
+        <entry key="..\:/Users/amber/AndroidStudioProjects/FarmersMarketredo/app/src/main/res/layout/fragment_list.xml" value="0.14351851851851852" />
         <entry key="..\:/Users/amber/AndroidStudioProjects/FarmersMarketredo/app/src/main/res/menu/menu_addproduce.xml" value="0.38697916666666665" />
         <entry key="..\:/Users/amber/AndroidStudioProjects/FarmersMarketredo/app/src/main/res/menu/menu_list.xml" value="0.1" />
       </map>

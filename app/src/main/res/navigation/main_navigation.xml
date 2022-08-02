@@ -10,4 +10,9 @@
         android:name="com.wit.farmersmarketredo.AddProduceFragment"
         android:label="fragment_add_produce"
         tools:layout="@layout/fragment_add_produce" />
+    <fragment
+        android:id="@+id/listFragment"
+        android:name="com.wit.farmersmarketredo.ListFragment"
+        android:label="fragment_list"
+        tools:layout="@layout/fragment_list" />
 </navigation>
