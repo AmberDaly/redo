@@ -85,6 +85,7 @@ class AddProduceFragment :Fragment() {
         inflater.inflate(R.menu.menu_addproduce, menu)
         super.onCreateOptionsMenu(menu, inflater)
     }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return NavigationUI.onNavDestinationSelected(item,
             requireView().findNavController()) || super.onOptionsItemSelected(item)

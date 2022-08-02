@@ -12,6 +12,10 @@
             android:id="@+id/reportFragment"
             android:icon="@drawable/ic_baseline_format_list_numbered_24"
             android:title="@string/action_list" />
+        <item
+            android:id="@+id/aboutusFragment"
+            android:icon="@drawable/ic_baseline_info_24"
+            android:title="@string/action_about" />
     </group>
 
     <item android:title="@string/group_communicate">

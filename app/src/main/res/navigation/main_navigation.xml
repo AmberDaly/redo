@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/addProduceFragment"
         android:name="com.wit.farmersmarketredo.ui.addProduce.AddProduceFragment"
-        android:label="fragment_add_produce"
+        android:label="@string/action_addproduce"
         tools:layout="@layout/fragment_add_produce" >
         <action
             android:id="@+id/action_addProduceFragment_to_listFragment"
@@ -19,7 +19,7 @@
     <fragment
         android:id="@+id/listFragment"
         android:name="com.wit.farmersmarketredo.ui.list.ListFragment"
-        android:label="fragment_list"
+        android:label="@string/action_list"
         tools:layout="@layout/fragment_list" >
         <action
             android:id="@+id/action_listFragment_to_addProduceFragment"
@@ -27,4 +27,9 @@
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim" />
     </fragment>
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.wit.farmersmarketredo.ui.about.AboutFragment"
+        android:label="@string/action_about"
+        tools:layout="@layout/fragment_about" />
 </navigation>
