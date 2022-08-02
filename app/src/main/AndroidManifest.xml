@@ -12,13 +12,9 @@
         android:theme="@style/Theme.FarmersMarketredo">
         <activity
             android:name=".activities.Home"
-            android:exported="true" />
-        <activity
-            android:name=".activities.List"
-            android:exported="false" />
-        <activity
-            android:name=".activities.AddProduce"
-            android:exported="true">
+            android:exported="true" >
+
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

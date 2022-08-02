@@ -1,10 +1,10 @@
 package com.wit.farmersmarketredo.fragments
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import androidx.navigation.findNavController
+import androidx.navigation.ui.NavigationUI
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.wit.farmersmarketredo.R
 import com.wit.farmersmarketredo.adapters.ProduceAdapter
@@ -25,6 +25,7 @@ class ListFragment :  Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         app = activity?.application as FarmersApp
+        setHasOptionsMenu(true)
     }
 
     override fun onCreateView(
@@ -40,7 +41,14 @@ class ListFragment :  Fragment() {
 
         return root
     }
-
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_list, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return NavigationUI.onNavDestinationSelected(item,
+            requireView().findNavController()) || super.onOptionsItemSelected(item)
+    }
     companion object {
         @JvmStatic
         fun newInstance() =
