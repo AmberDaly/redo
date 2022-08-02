@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.*
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.*
 import com.wit.farmersmarketredo.R
 import com.wit.farmersmarketredo.databinding.HomeBinding
@@ -24,15 +25,18 @@ class Home : AppCompatActivity() {
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
 
-        val navController = findNavController(R.id.nav_host_fragment)
+        val navHostFragment = supportFragmentManager.
+
+        findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        val navController = navHostFragment.navController
 
         appBarConfiguration = AppBarConfiguration(setOf(
-            R.id.donateFragment, R.id.reportFragment), drawerLayout)
+            R.id.donateFragment, R.id.reportFragment, R.id.aboutusFragment), drawerLayout)
         setupActionBarWithNavController(navController, appBarConfiguration)
-
 
         val navView = homeBinding.navView
         navView.setupWithNavController(navController)
+
     }
 
     override fun onSupportNavigateUp(): Boolean {

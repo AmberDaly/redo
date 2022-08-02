@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/addProduceFragment"
-        android:name="com.wit.farmersmarketredo.fragments.AddProduceFragment"
+        android:name="com.wit.farmersmarketredo.ui.addProduce.AddProduceFragment"
         android:label="fragment_add_produce"
         tools:layout="@layout/fragment_add_produce" >
         <action
@@ -18,7 +18,7 @@
     </fragment>
     <fragment
         android:id="@+id/listFragment"
-        android:name="com.wit.farmersmarketredo.fragments.ListFragment"
+        android:name="com.wit.farmersmarketredo.ui.list.ListFragment"
         android:label="fragment_list"
         tools:layout="@layout/fragment_list" >
         <action

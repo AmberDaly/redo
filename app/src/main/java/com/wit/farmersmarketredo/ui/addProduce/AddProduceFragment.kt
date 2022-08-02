@@ -1,9 +1,12 @@
-package com.wit.farmersmarketredo.fragments
+package com.wit.farmersmarketredo.ui.addProduce
 
 import android.os.Bundle
 import android.view.*
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import android.widget.Toast
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.wit.farmersmarketredo.R
@@ -11,26 +14,21 @@ import com.wit.farmersmarketredo.databinding.FragmentAddProduceBinding
 import com.wit.farmersmarketredo.main.FarmersApp
 import com.wit.farmersmarketredo.models.ProduceModel
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [AddProduceFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class AddProduceFragment :Fragment() {
+
     lateinit var app: FarmersApp
     var totalDonated = 0
     private var _fragBinding: FragmentAddProduceBinding? = null
+
     private val fragBinding get() = _fragBinding!!
+
+    private lateinit var addproduceViewModel: AddProduceViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         app = activity?.application as FarmersApp
         setHasOptionsMenu(true)
+
     }
 
     override fun onCreateView(
@@ -41,6 +39,13 @@ class AddProduceFragment :Fragment() {
         _fragBinding = FragmentAddProduceBinding.inflate(inflater, container, false)
         val root = fragBinding.root
         activity?.title = getString(R.string.action_addproduce)
+
+        addproduceViewModel =
+            ViewModelProvider(this).get(AddProduceViewModel::class.java)
+        //val textView: TextView = root.findViewById(R.id.text_home)
+        addproduceViewModel.text.observe(viewLifecycleOwner, Observer {
+            //textView.text = it
+        })
 
         fragBinding.progressBar.max = 10000
         fragBinding.amountPicker.minValue = 1
