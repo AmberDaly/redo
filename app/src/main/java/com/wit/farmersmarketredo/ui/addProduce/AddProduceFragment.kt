@@ -3,8 +3,8 @@ package com.wit.farmersmarketredo.ui.addProduce
 import android.os.Bundle
 import android.view.*
 import android.widget.TextView
-import androidx.fragment.app.Fragment
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
@@ -22,7 +22,7 @@ class AddProduceFragment :Fragment() {
 
     private val fragBinding get() = _fragBinding!!
 
-    private lateinit var addproduceViewModel: AddProduceViewModel
+    private lateinit var addProduceViewModel: AddProduceViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,10 +40,10 @@ class AddProduceFragment :Fragment() {
         val root = fragBinding.root
         activity?.title = getString(R.string.action_addproduce)
 
-        addproduceViewModel =
+        addProduceViewModel =
             ViewModelProvider(this).get(AddProduceViewModel::class.java)
         //val textView: TextView = root.findViewById(R.id.text_home)
-        addproduceViewModel.text.observe(viewLifecycleOwner, Observer {
+        addProduceViewModel.text.observe(viewLifecycleOwner, Observer {
             //textView.text = it
         })
 
@@ -66,6 +66,7 @@ class AddProduceFragment :Fragment() {
                 arguments = Bundle().apply {}
             }
     }
+
     fun setButtonListener(layout: FragmentAddProduceBinding) {
         layout.donateButton.setOnClickListener {
             val amount = if (layout.paymentAmount.text.isNotEmpty())
@@ -81,6 +82,7 @@ class AddProduceFragment :Fragment() {
             }
         }
     }
+
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menu_addproduce, menu)
         super.onCreateOptionsMenu(menu, inflater)

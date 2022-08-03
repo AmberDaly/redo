@@ -7,7 +7,7 @@ import com.wit.farmersmarketredo.R
 import com.wit.farmersmarketredo.databinding.CardProduceBinding
 import com.wit.farmersmarketredo.models.ProduceModel
 
-class ProduceAdapter constructor(private var donations: List<ProduceModel>)
+class ProduceAdapter constructor(private var produces: List<ProduceModel>)
     : RecyclerView.Adapter<ProduceAdapter.MainHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
@@ -18,11 +18,11 @@ class ProduceAdapter constructor(private var donations: List<ProduceModel>)
     }
 
     override fun onBindViewHolder(holder: MainHolder, position: Int) {
-        val donation = donations[holder.adapterPosition]
-        holder.bind(donation)
+        val produce = produces[holder.adapterPosition]
+        holder.bind(produce)
     }
 
-    override fun getItemCount(): Int = donations.size
+    override fun getItemCount(): Int = produces.size
 
     inner class MainHolder(val binding : CardProduceBinding) : RecyclerView.ViewHolder(binding.root) {
 
