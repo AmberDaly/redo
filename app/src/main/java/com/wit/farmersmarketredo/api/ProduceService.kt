@@ -16,10 +16,10 @@ interface ProduceService {
     fun delete(@Path("id") id: String): Call<ProduceWrapper>
 
     @POST("/produces")
-    fun post(@Body donation: ProduceModel): Call<ProduceWrapper>
+    fun post(@Body produce: ProduceModel): Call<ProduceWrapper>
 
     @PUT("/produces/{id}")
     fun put(@Path("id") id: String,
-            @Body donation: ProduceModel
+            @Body produce: ProduceModel
     ): Call<ProduceWrapper>
 }

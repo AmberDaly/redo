@@ -5,7 +5,7 @@
 
     <data>
         <variable
-            name="donationvm"
+            name="producevm"
             type="com.wit.farmersmarketredo.ui.detail.ProduceDetailViewModel" />
     </data>
 
@@ -64,7 +64,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="4dp"
         android:gravity="center"
-        android:text="@{donationvm.observableProduce.paymentmethod}"
+        android:text="@{producevm.observableProduce.paymentmethod}"
         android:textAlignment="viewStart"
         android:textColor="@color/color_primary"
         android:textSize="24sp"
@@ -93,7 +93,7 @@
         android:inputType="number"
         android:textAlignment="viewStart"
         android:textSize="24sp"
-        android:text="@{Integer.toString(donationvm.observableProduce.amount)}"
+        android:text="@{Integer.toString(producevm.observableProduce.amount)}"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

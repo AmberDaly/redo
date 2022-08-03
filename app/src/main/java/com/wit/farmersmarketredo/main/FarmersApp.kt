@@ -7,7 +7,7 @@ import com.wit.farmersmarketredo.models.ProduceStore
 
 class FarmersApp : Application() {
 
-    lateinit var producesStore: ProduceStore
+    //lateinit var producesStore: ProduceStore
 
     override fun onCreate() {
         super.onCreate()

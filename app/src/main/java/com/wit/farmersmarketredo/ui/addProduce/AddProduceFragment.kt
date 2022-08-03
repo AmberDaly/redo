@@ -39,7 +39,7 @@ class AddProduceFragment :Fragment() {
 
         _fragBinding = FragmentAddProduceBinding.inflate(inflater, container, false)
         val root = fragBinding.root
-        activity?.title = getString(R.string.action_addproduce)
+        //activity?.title = getString(R.string.action_addproduce)
 
         addProduceViewModel = ViewModelProvider(this).get(AddProduceViewModel::class.java)
         addProduceViewModel.observableStatus.observe(viewLifecycleOwner, Observer {
@@ -105,8 +105,8 @@ class AddProduceFragment :Fragment() {
     override fun onResume() {
         super.onResume()
         val listViewModel = ViewModelProvider(this).get(ListViewModel::class.java)
-        listViewModel.observableDonationsList.observe(viewLifecycleOwner, Observer {
-            totalDonated = listViewModel.observableDonationsList.value!!.sumOf { it.amount }
+        listViewModel.observableProducesList.observe(viewLifecycleOwner, Observer {
+            totalDonated = listViewModel.observableProducesList.value!!.sumOf { it.amount }
             fragBinding.progressBar.progress = totalDonated
             fragBinding.totalSoFar.text = getString(R.string.total_donated,totalDonated)
         })

@@ -11,8 +11,10 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
 import com.wit.farmersmarketredo.R
 import com.wit.farmersmarketredo.databinding.ProduceDetailFragmentBinding
+import timber.log.Timber
 
-class ProduceDetailFragment : Fragment() {private lateinit var detailViewModel: ProduceDetailViewModel
+class ProduceDetailFragment : Fragment() {
+    private lateinit var detailViewModel: ProduceDetailViewModel
     private val args by navArgs<ProduceDetailFragmentArgs>()
     private var _fragBinding: ProduceDetailFragmentBinding? = null
     private val fragBinding get() = _fragBinding!!
@@ -30,12 +32,12 @@ class ProduceDetailFragment : Fragment() {private lateinit var detailViewModel: 
         return root
     }
 
-    private fun render(/*donation: DonationModel*/) {
-        // fragBinding.editAmount.setText(donation.amount.toString())
-        // fragBinding.editPaymenttype.text = donation.paymentmethod
+    private fun render() {
+
         fragBinding.editMessage.setText("A Message")
         fragBinding.editUpvotes.setText("0")
-        fragBinding.donationvm = detailViewModel
+        fragBinding.producevm = detailViewModel
+        Timber.i("Retrofit fragBinding.producevm == $fragBinding.producevm")
     }
 
     override fun onResume() {
