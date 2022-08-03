@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
+<layout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="produce"
+            type="com.wit.farmersmarketredo.models.ProduceModel" />
+    </data>
+<androidx.cardview.widget.CardView
+
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -9,6 +16,7 @@
     android:elevation="24dp">
 
     <RelativeLayout
+        android:id="@+id/cardDonation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16dp">
@@ -31,6 +39,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="15dp"
             android:layout_toEndOf="@+id/imageIcon"
+            android:text="@{Integer.toString(produce.amount)}"
             android:textSize="24sp"
             tools:text="€1000" />
 
@@ -42,8 +51,10 @@
             android:layout_marginStart="30dp"
             android:layout_marginTop="15dp"
             android:layout_toEndOf="@+id/paymentamount"
-            android:text="@string/paypal"
-            android:textSize="24sp" />
+            android:text="@{produce.paymentmethod}"
+            android:textSize="24sp"
+            tools:text="@string/paypal" />
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>
+</layout>

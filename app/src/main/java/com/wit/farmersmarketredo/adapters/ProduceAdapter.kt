@@ -29,10 +29,13 @@ class ProduceAdapter constructor(private var produces: List<ProduceModel>)
 
     inner class MainHolder(val binding : CardProduceBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(donation: ProduceModel) {
-            binding.paymentamount.text = donation.amount.toString()
-            binding.paymentmethod.text = donation.paymentmethod
+        fun bind(produce: ProduceModel) {//binding.paymentamount.text = donation.amount.toString()
+            //binding.paymentmethod.text = donation.paymentmethod
+
+            binding.produce = produce
             binding.imageIcon.setImageResource(R.mipmap.ic_launcher_round)
+            //Include this call to force the bindings to happen immediately
+            binding.executePendingBindings()
         }
     }
 }
