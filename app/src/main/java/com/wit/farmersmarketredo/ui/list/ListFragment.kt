@@ -68,8 +68,8 @@ class ListFragment :  Fragment() , ProduceClickListener {
             fragBinding.donationsNotFound.visibility = View.GONE
         }
     }
-    override fun onProduceClick(produce: ProduceModel) {
-        val action = ListFragmentDirections.actionListFragmentToProduceDetailFragment()
+    override fun onProduceClick(produce: ProduceModel){
+        val action = ListFragmentDirections.actionListFragmentToProduceDetailFragment(produce.id)
         findNavController().navigate(action)
     }
     override fun onResume() {
