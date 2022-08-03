@@ -31,8 +31,8 @@
 
     <string name="produceNotFound">No produce Yet...</string>
     <string name="produceError">Error : Couldn\'t Add Produce...</string>
-
     <string name="produceDetails">Produce Details</string>
+
     <string name="amt">Amount :</string>
     <string name="payment">Payment :</string>
     <string name="message">Message :</string>

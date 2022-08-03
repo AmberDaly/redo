@@ -7,33 +7,44 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
 import com.wit.farmersmarketredo.R
+import com.wit.farmersmarketredo.databinding.ProduceDetailFragmentBinding
 
-class ProduceDetailFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = ProduceDetailFragment()
-    }
-
-    private lateinit var viewModel: ProduceDetailViewModel
+class ProduceDetailFragment : Fragment() {private lateinit var detailViewModel: ProduceDetailViewModel
     private val args by navArgs<ProduceDetailFragmentArgs>()
+    private var _fragBinding: ProduceDetailFragmentBinding? = null
+    private val fragBinding get() = _fragBinding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
-        val view = inflater.inflate(R.layout.produce_detail_fragment, container, false)
+        _fragBinding = ProduceDetailFragmentBinding.inflate(inflater, container, false)
+        val root = fragBinding.root
 
-        Toast.makeText(context,"Donation ID Selected : ${args.produceid}",Toast.LENGTH_LONG).show()
-
-        return view
-    }
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(ProduceDetailViewModel::class.java)
-        // TODO: Use the ViewModel
+        detailViewModel = ViewModelProvider(this).get(ProduceDetailViewModel::class.java)
+        detailViewModel.observableProduce.observe(viewLifecycleOwner, Observer { render() })
+        return root
     }
 
+    private fun render(/*donation: DonationModel*/) {
+        // fragBinding.editAmount.setText(donation.amount.toString())
+        // fragBinding.editPaymenttype.text = donation.paymentmethod
+        fragBinding.editMessage.setText("A Message")
+        fragBinding.editUpvotes.setText("0")
+        fragBinding.donationvm = detailViewModel
+    }
+
+    override fun onResume() {
+        super.onResume()
+        detailViewModel.getProduce(args.produceid)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _fragBinding = null
+    }
 }

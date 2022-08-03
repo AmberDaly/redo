@@ -12,7 +12,8 @@ interface ProduceClickListener {
     fun onProduceClick(produce: ProduceModel)
 }
 
-class ProduceAdapter constructor(private var produces: List<ProduceModel>,private val listener: ProduceClickListener)
+class ProduceAdapter constructor(private var produces: List<ProduceModel>,
+                                 private val listener: ProduceClickListener)
     : RecyclerView.Adapter<ProduceAdapter.MainHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
@@ -31,7 +32,8 @@ class ProduceAdapter constructor(private var produces: List<ProduceModel>,privat
 
     inner class MainHolder(val binding : CardProduceBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(produce: ProduceModel, listener: ProduceClickListener) {//binding.paymentamount.text = donation.amount.toString()
+        fun bind(produce: ProduceModel, listener: ProduceClickListener) {
+            //binding.paymentamount.text = donation.amount.toString()
             //binding.paymentmethod.text = donation.paymentmethod
 
             binding.produce = produce
