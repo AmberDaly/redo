@@ -37,4 +37,5 @@
     <string name="payment">Payment :</string>
     <string name="message">Message :</string>
     <string name="upvotes">UpVotes :</string>
+    <string name="messageLoading">Please Wait while the produce is Loading...</string>
 </resources>
