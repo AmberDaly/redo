@@ -7,16 +7,17 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.wit.farmersmarketredo.R
 import com.wit.farmersmarketredo.adapters.ProduceAdapter
-
+import com.wit.farmersmarketredo.adapters.ProduceClickListener
 import com.wit.farmersmarketredo.databinding.FragmentListBinding
 import com.wit.farmersmarketredo.main.FarmersApp
 import com.wit.farmersmarketredo.models.ProduceModel
 
-class ListFragment :  Fragment() {
+class ListFragment :  Fragment() , ProduceClickListener {
 
     lateinit var app: FarmersApp
     private var _fragBinding: FragmentListBinding? = null
@@ -58,7 +59,7 @@ class ListFragment :  Fragment() {
     }
 
     private fun render(donationsList: List<ProduceModel>) {
-        fragBinding.recyclerView.adapter = ProduceAdapter(donationsList)
+        fragBinding.recyclerView.adapter = ProduceAdapter(donationsList,this)
         if (donationsList.isEmpty()) {
             fragBinding.recyclerView.visibility = View.GONE
             fragBinding.donationsNotFound.visibility = View.VISIBLE
@@ -67,7 +68,10 @@ class ListFragment :  Fragment() {
             fragBinding.donationsNotFound.visibility = View.GONE
         }
     }
-
+    override fun onProduceClick(produce: ProduceModel) {
+        val action = ListFragmentDirections.actionListFragmentToProduceDetailFragment()
+        findNavController().navigate(action)
+    }
     override fun onResume() {
         super.onResume()
         listViewModel.load()

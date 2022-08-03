@@ -26,10 +26,22 @@
             app:destination="@id/addProduceFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim" />
+        <action
+            android:id="@+id/action_listFragment_to_produceDetailFragment"
+            app:destination="@id/produceDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/aboutFragment"
         android:name="com.wit.farmersmarketredo.ui.about.AboutFragment"
         android:label="@string/action_about"
         tools:layout="@layout/fragment_about" />
+    <fragment
+        android:id="@+id/produceDetailFragment"
+        android:name="com.wit.farmersmarketredo.ui.detail.ProduceDetailFragment"
+        android:label="produce_detail_fragment"
+        tools:layout="@layout/produce_detail_fragment" >
+        <action
+            android:id="@+id/action_produceDetailFragment_to_listFragment"
+            app:destination="@id/listFragment" />
+    </fragment>
 </navigation>
