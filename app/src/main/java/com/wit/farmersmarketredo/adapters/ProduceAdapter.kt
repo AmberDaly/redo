@@ -7,6 +7,9 @@ import com.wit.farmersmarketredo.R
 import com.wit.farmersmarketredo.databinding.CardProduceBinding
 import com.wit.farmersmarketredo.models.ProduceModel
 
+
+
+
 class ProduceAdapter constructor(private var produces: List<ProduceModel>)
     : RecyclerView.Adapter<ProduceAdapter.MainHolder>() {
 

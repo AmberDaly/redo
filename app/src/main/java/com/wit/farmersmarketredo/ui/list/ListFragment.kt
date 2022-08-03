@@ -11,23 +11,21 @@ import androidx.navigation.ui.NavigationUI
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.wit.farmersmarketredo.R
 import com.wit.farmersmarketredo.adapters.ProduceAdapter
+
 import com.wit.farmersmarketredo.databinding.FragmentListBinding
 import com.wit.farmersmarketredo.main.FarmersApp
+import com.wit.farmersmarketredo.models.ProduceModel
 
 class ListFragment :  Fragment() {
 
     lateinit var app: FarmersApp
     private var _fragBinding: FragmentListBinding? = null
     private val fragBinding get() = _fragBinding!!
-
-
     private lateinit var listViewModel: ListViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        app = activity?.application as FarmersApp
         setHasOptionsMenu(true)
-
     }
 
     override fun onCreateView(
@@ -36,17 +34,15 @@ class ListFragment :  Fragment() {
     ): View? {
         _fragBinding = FragmentListBinding.inflate(inflater, container, false)
         val root = fragBinding.root
-        activity?.title = getString(R.string.action_list)
 
-        listViewModel =
-            ViewModelProvider(this).get(ListViewModel::class.java)
-        //val textView: TextView = root.findViewById(R.id.text_gallery)
-        listViewModel.text.observe(viewLifecycleOwner, Observer {
-            //textView.text = it
+        fragBinding.recyclerView.layoutManager = LinearLayoutManager(activity)
+
+        listViewModel = ViewModelProvider(this).get(ListViewModel::class.java)
+        listViewModel.observableDonationsList.observe(viewLifecycleOwner, Observer {
+                donations ->
+            donations?.let { render(donations) }
         })
 
-        fragBinding.recyclerView.setLayoutManager(LinearLayoutManager(activity))
-        fragBinding.recyclerView.adapter = ProduceAdapter(app.producesStore.findAll())
 
         return root
     }
@@ -61,12 +57,20 @@ class ListFragment :  Fragment() {
             requireView().findNavController()) || super.onOptionsItemSelected(item)
     }
 
-    companion object {
-        @JvmStatic
-        fun newInstance() =
-            ListFragment().apply {
-                arguments = Bundle().apply { }
-            }
+    private fun render(donationsList: List<ProduceModel>) {
+        fragBinding.recyclerView.adapter = ProduceAdapter(donationsList)
+        if (donationsList.isEmpty()) {
+            fragBinding.recyclerView.visibility = View.GONE
+            fragBinding.donationsNotFound.visibility = View.VISIBLE
+        } else {
+            fragBinding.recyclerView.visibility = View.VISIBLE
+            fragBinding.donationsNotFound.visibility = View.GONE
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        listViewModel.load()
     }
 
     override fun onDestroyView() {

@@ -13,10 +13,11 @@ import com.wit.farmersmarketredo.R
 import com.wit.farmersmarketredo.databinding.FragmentAddProduceBinding
 import com.wit.farmersmarketredo.main.FarmersApp
 import com.wit.farmersmarketredo.models.ProduceModel
+import com.wit.farmersmarketredo.ui.list.ListViewModel
 
 class AddProduceFragment :Fragment() {
 
-    lateinit var app: FarmersApp
+    //lateinit var app: FarmersApp
     var totalDonated = 0
     private var _fragBinding: FragmentAddProduceBinding? = null
 
@@ -26,7 +27,7 @@ class AddProduceFragment :Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        app = activity?.application as FarmersApp
+       // app = activity?.application as FarmersApp
         setHasOptionsMenu(true)
 
     }
@@ -40,11 +41,9 @@ class AddProduceFragment :Fragment() {
         val root = fragBinding.root
         activity?.title = getString(R.string.action_addproduce)
 
-        addProduceViewModel =
-            ViewModelProvider(this).get(AddProduceViewModel::class.java)
-        //val textView: TextView = root.findViewById(R.id.text_home)
-        addProduceViewModel.text.observe(viewLifecycleOwner, Observer {
-            //textView.text = it
+        addProduceViewModel = ViewModelProvider(this).get(AddProduceViewModel::class.java)
+        addProduceViewModel.observableStatus.observe(viewLifecycleOwner, Observer {
+                status -> status?.let { render(status) }
         })
 
         fragBinding.progressBar.max = 10000
@@ -59,12 +58,16 @@ class AddProduceFragment :Fragment() {
         return root;
     }
 
-    companion object {
-        @JvmStatic
-        fun newInstance() =
-            AddProduceFragment().apply {
-                arguments = Bundle().apply {}
+    private fun render(status: Boolean) {
+        when (status) {
+            true -> {
+                view?.let {
+                    //Uncomment this if you want to immediately return to Report
+                    //findNavController().popBackStack()
+                }
             }
+            false -> Toast.makeText(context,getString(R.string.produceError),Toast.LENGTH_LONG).show()
+        }
     }
 
     fun setButtonListener(layout: FragmentAddProduceBinding) {
@@ -76,9 +79,10 @@ class AddProduceFragment :Fragment() {
             else {
                 val paymentmethod = if(layout.paymentMethod.checkedRadioButtonId == R.id.Direct) "Direct" else "Paypal"
                 totalDonated += amount
-                layout.totalSoFar.text = "$$totalDonated"
+                layout.totalSoFar.text = getString(R.string.total_donated,totalDonated)
                 layout.progressBar.progress = totalDonated
-                app.producesStore.create(ProduceModel(paymentmethod = paymentmethod,amount = amount))
+                addProduceViewModel.addProduce(ProduceModel(paymentmethod = paymentmethod,amount = amount))
+
             }
         }
     }
@@ -100,8 +104,11 @@ class AddProduceFragment :Fragment() {
 
     override fun onResume() {
         super.onResume()
-        totalDonated = app.producesStore.findAll().sumOf { it.amount }
-        fragBinding.progressBar.progress = totalDonated
-        fragBinding.totalSoFar.text = "$$totalDonated"
+        val listViewModel = ViewModelProvider(this).get(ListViewModel::class.java)
+        listViewModel.observableDonationsList.observe(viewLifecycleOwner, Observer {
+            totalDonated = listViewModel.observableDonationsList.value!!.sumOf { it.amount }
+            fragBinding.progressBar.progress = totalDonated
+            fragBinding.totalSoFar.text = getString(R.string.total_donated,totalDonated)
+        })
     }
 }

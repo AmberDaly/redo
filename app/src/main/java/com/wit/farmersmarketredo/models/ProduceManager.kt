@@ -8,7 +8,7 @@ internal fun getId(): Long {
     return lastId++
 }
 
-class ProduceMemStore : ProduceStore {
+object ProduceManager : ProduceStore {
 
     val produces = ArrayList<ProduceModel>()
 
