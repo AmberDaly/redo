@@ -10,7 +10,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.wit.farmersmarketredo.R
 
-
 class AboutFragment : Fragment() {
 
     private lateinit var aboutViewModel: AboutViewModel

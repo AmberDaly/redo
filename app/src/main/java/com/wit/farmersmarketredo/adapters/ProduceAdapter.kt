@@ -7,12 +7,11 @@ import com.wit.farmersmarketredo.R
 import com.wit.farmersmarketredo.databinding.CardProduceBinding
 import com.wit.farmersmarketredo.models.ProduceModel
 
-
 interface ProduceClickListener {
     fun onProduceClick(produce: ProduceModel)
 }
 
-class ProduceAdapter constructor(private var produces: List<ProduceModel>,
+class ProduceAdapter constructor(private var produces: ArrayList<ProduceModel>,
                                  private val listener: ProduceClickListener)
     : RecyclerView.Adapter<ProduceAdapter.MainHolder>() {
 
@@ -28,10 +27,10 @@ class ProduceAdapter constructor(private var produces: List<ProduceModel>,
         holder.bind(produce,listener)
     }
 
-//    fun removeAt(position: Int) {
-//        produces.removeAt(position)
-//        notifyItemRemoved(position)
-//    }
+    fun removeAt(position: Int) {
+        produces.removeAt(position)
+        notifyItemRemoved(position)
+    }
 
 
     override fun getItemCount(): Int = produces.size

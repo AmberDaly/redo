@@ -11,7 +11,8 @@ import java.lang.Exception
 class ListViewModel : ViewModel() {
 
 
-    private val producesList = MutableLiveData<List<ProduceModel>>()
+    private val producesList =
+        MutableLiveData<List<ProduceModel>>()
 
     val observableProducesList: LiveData<List<ProduceModel>>
         get() = producesList

@@ -3,7 +3,6 @@ package com.wit.farmersmarketredo.ui.list
 import android.app.AlertDialog
 import android.os.Bundle
 import android.view.*
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -47,9 +46,8 @@ class ListFragment :  Fragment() , ProduceClickListener {
         loader = createLoader(requireActivity())
 
         fragBinding.recyclerView.layoutManager = LinearLayoutManager(activity)
-
         listViewModel = ViewModelProvider(this).get(ListViewModel::class.java)
-        showLoader(loader,"Downloading produce")
+        showLoader(loader,"Downloading Produces")
         listViewModel.observableProducesList.observe(viewLifecycleOwner, Observer {
                 produces ->
             produces?.let {
@@ -64,9 +62,9 @@ class ListFragment :  Fragment() , ProduceClickListener {
 
         val swipeDeleteHandler = object : SwipeToDeleteCallback(requireContext()) {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                showLoader(loader,"Deleting Donation")
-//                val adapter = fragBinding.recyclerView.adapter as ProduceAdapter
-////                adapter.removeAt(viewHolder.adapterPosition)
+                showLoader(loader,"Deleting Produce")
+                val adapter = fragBinding.recyclerView.adapter as ProduceAdapter
+                adapter.removeAt(viewHolder.adapterPosition)
                 listViewModel.delete(viewHolder.itemView.tag as String)
                 hideLoader(loader)
             }
@@ -87,7 +85,7 @@ class ListFragment :  Fragment() , ProduceClickListener {
             requireView().findNavController()) || super.onOptionsItemSelected(item)
     }
 
-    private fun render(producesList: List<ProduceModel>) {
+    private fun render(producesList: ArrayList<ProduceModel>) {
         fragBinding.recyclerView.adapter = ProduceAdapter(producesList,this)
         if (producesList.isEmpty()) {
             fragBinding.recyclerView.visibility = View.GONE
@@ -105,7 +103,7 @@ class ListFragment :  Fragment() , ProduceClickListener {
     fun setSwipeRefresh() {
         fragBinding.swiperefresh.setOnRefreshListener {
             fragBinding.swiperefresh.isRefreshing = true
-            showLoader(loader,"Downloading Donations")
+         showLoader(loader,"Downloading Produce")
             listViewModel.load()
         }
     }

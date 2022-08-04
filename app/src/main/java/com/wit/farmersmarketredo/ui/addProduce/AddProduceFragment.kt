@@ -18,7 +18,7 @@ import com.wit.farmersmarketredo.ui.list.ListViewModel
 class AddProduceFragment :Fragment() {
 
     //lateinit var app: FarmersApp
-    var totalDonated = 0
+    var totalProduce = 0
     private var _fragBinding: FragmentAddProduceBinding? = null
 
     private val fragBinding get() = _fragBinding!!
@@ -71,16 +71,16 @@ class AddProduceFragment :Fragment() {
     }
 
     fun setButtonListener(layout: FragmentAddProduceBinding) {
-        layout.donateButton.setOnClickListener {
+        layout.produceButton.setOnClickListener {
             val amount = if (layout.paymentAmount.text.isNotEmpty())
                 layout.paymentAmount.text.toString().toInt() else layout.amountPicker.value
-            if(totalDonated >= layout.progressBar.max)
-                Toast.makeText(context,"Donate Amount Exceeded!", Toast.LENGTH_LONG).show()
+            if(totalProduce >= layout.progressBar.max)
+                Toast.makeText(context,"Produce Amount Exceeded!", Toast.LENGTH_LONG).show()
             else {
                 val paymentmethod = if(layout.paymentMethod.checkedRadioButtonId == R.id.Direct) "Direct" else "Paypal"
-                totalDonated += amount
-                layout.totalSoFar.text = getString(R.string.total_donated,totalDonated)
-                layout.progressBar.progress = totalDonated
+                totalProduce += amount
+                layout.totalSoFar.text = getString(R.string.total_produce,totalProduce)
+                layout.progressBar.progress = totalProduce
                 addProduceViewModel.addProduce(ProduceModel(paymentmethod = paymentmethod,amount = amount))
 
             }
@@ -106,9 +106,9 @@ class AddProduceFragment :Fragment() {
         super.onResume()
         val listViewModel = ViewModelProvider(this).get(ListViewModel::class.java)
         listViewModel.observableProducesList.observe(viewLifecycleOwner, Observer {
-            totalDonated = listViewModel.observableProducesList.value!!.sumOf { it.amount }
-            fragBinding.progressBar.progress = totalDonated
-            fragBinding.totalSoFar.text = getString(R.string.total_donated,totalDonated)
+            totalProduce = listViewModel.observableProducesList.value!!.sumOf { it.amount }
+            fragBinding.progressBar.progress = totalProduce
+            fragBinding.totalSoFar.text = getString(R.string.total_produce,totalProduce)
         })
     }
 }

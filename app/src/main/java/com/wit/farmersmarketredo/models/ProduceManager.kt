@@ -3,7 +3,9 @@ package com.wit.farmersmarketredo.models
 import androidx.lifecycle.MutableLiveData
 import com.wit.farmersmarketredo.api.ProduceClient
 import com.wit.farmersmarketredo.api.ProduceWrapper
-import retrofit2.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import timber.log.Timber
 
 var lastId = 0L
@@ -35,8 +37,8 @@ object ProduceManager : ProduceStore {
     }
 
     override fun findById(id:String) : ProduceModel? {
-        val foundDonation: ProduceModel? = produces.find { it._id == id}
-        return foundDonation
+        val foundProduce: ProduceModel? = produces.find { it._id == id}
+        return foundProduce
     }
 
     override fun create(produce: ProduceModel) {
@@ -80,7 +82,7 @@ object ProduceManager : ProduceStore {
     }
 
     fun logAll() {
-        Timber.v("** Donations List **")
-        produces.forEach { Timber.v("Donate ${it}") }
+        Timber.v("** Produces List **")
+        produces.forEach { Timber.v("Produce ${it}") }
     }
 }

@@ -8,7 +8,7 @@
     tools:context=".ui.addProduce.AddProduceFragment">
 
     <TextView
-        android:id="@+id/donateTitle"
+        android:id="@+id/produceTitle"
         android:layout_width="188dp"
         android:layout_height="30dp"
         android:layout_alignParentEnd="true"
@@ -18,7 +18,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="@string/donateTitle"
+        android:text="@string/produceTitle"
         android:textAppearance="?android:attr/textAppearanceLarge"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,17 +28,17 @@
         app:layout_constraintVertical_bias="0.017" />
 
     <TextView
-        android:id="@+id/donateSubtitle"
+        android:id="@+id/produceSubtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/donateTitle"
+        android:layout_alignEnd="@+id/produceTitle"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/donateTitle"
+        android:layout_below="@+id/produceTitle"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="@string/donateSubtitle"
+        android:text="@string/produceSubtitle"
         android:textAppearance="?android:attr/textAppearanceMedium"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -48,7 +48,7 @@
         app:layout_constraintVertical_bias="0.114" />
 
     <Button
-        android:id="@+id/donateButton"
+        android:id="@+id/produceButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -57,7 +57,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="@string/donateButton"
+        android:text="@string/produceButton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.028"
@@ -71,7 +71,7 @@
         android:layout_height="128dp"
         android:layout_above="@+id/progressBar"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/donateSubtitle"
+        android:layout_below="@+id/produceSubtitle"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
@@ -81,7 +81,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.042"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/donateTitle"
+        app:layout_constraintTop_toTopOf="@+id/produceTitle"
         app:layout_constraintVertical_bias="0.276">
 
         <RadioButton
@@ -103,7 +103,7 @@
         android:id="@+id/amountPicker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/donateSubtitle"
+        android:layout_alignEnd="@+id/produceSubtitle"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
@@ -120,8 +120,8 @@
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="349dp"
         android:layout_height="14dp"
-        android:layout_above="@+id/donateButton"
-        android:layout_alignEnd="@+id/donateSubtitle"
+        android:layout_above="@+id/produceButton"
+        android:layout_alignEnd="@+id/produceSubtitle"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"

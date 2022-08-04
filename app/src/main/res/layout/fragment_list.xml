@@ -34,11 +34,12 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
     <TextView
         android:id="@+id/producesNotFound"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/produceNotFound"
+        android:text="@string/producesNotFound"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="@color/color_primary"
@@ -47,18 +48,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Produce not Found." />
-
-<!--    <TextView-->
-<!--        android:id="@+id/reportTitle"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="@string/action_list"-->
-<!--        android:textSize="36sp"-->
-<!--        app:layout_constraintBottom_toTopOf="@+id/recyclerView"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.052"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:layout_constraintVertical_bias="0.238" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
