@@ -3,6 +3,7 @@ package com.wit.farmersmarketredo.models
 import androidx.lifecycle.MutableLiveData
 import com.wit.farmersmarketredo.api.ProduceClient
 import com.wit.farmersmarketredo.api.ProduceWrapper
+
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -16,7 +17,7 @@ internal fun getId(): Long {
 
 object ProduceManager : ProduceStore {
 
-    private val produces = ArrayList<ProduceModel>()
+    private var produces = ArrayList<ProduceModel>()
 
     override fun findAll(producesList: MutableLiveData<List<ProduceModel>>) {
 
@@ -37,11 +38,12 @@ object ProduceManager : ProduceStore {
     }
 
     override fun findById(id:String) : ProduceModel? {
-        val foundProduce: ProduceModel? = produces.find { it._id == id}
+        val foundProduce: ProduceModel? = produces.find { it._id == id }
         return foundProduce
     }
 
     override fun create(produce: ProduceModel) {
+
         val call = ProduceClient.getApi().post(produce)
 
         call.enqueue(object : Callback<ProduceWrapper> {
@@ -56,7 +58,7 @@ object ProduceManager : ProduceStore {
             }
 
             override fun onFailure(call: Call<ProduceWrapper>, t: Throwable) {
-                Timber.i("Retrofit Error : $t.message")
+                        Timber.i("Retrofit Error : $t.message")
             }
         })
     }

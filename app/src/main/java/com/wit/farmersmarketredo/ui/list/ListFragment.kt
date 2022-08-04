@@ -16,16 +16,17 @@ import com.wit.farmersmarketredo.R
 import com.wit.farmersmarketredo.adapters.ProduceAdapter
 import com.wit.farmersmarketredo.adapters.ProduceClickListener
 import com.wit.farmersmarketredo.databinding.FragmentListBinding
-import com.wit.farmersmarketredo.main.FarmersApp
+import com.wit.farmersmarketredo.main.FarmerApp
 import com.wit.farmersmarketredo.models.ProduceModel
 import com.wit.farmersmarketredo.utils.SwipeToDeleteCallback
 import com.wit.farmersmarketredo.utils.createLoader
 import com.wit.farmersmarketredo.utils.hideLoader
 import com.wit.farmersmarketredo.utils.showLoader
 
-class ListFragment :  Fragment() , ProduceClickListener {
 
-    lateinit var app: FarmersApp
+class ListFragment : Fragment(), ProduceClickListener {
+
+    lateinit var app: FarmerApp
     private var _fragBinding: FragmentListBinding? = null
     private val fragBinding get() = _fragBinding!!
     private lateinit var listViewModel: ListViewModel
@@ -38,8 +39,7 @@ class ListFragment :  Fragment() , ProduceClickListener {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-
+                                savedInstanceState: Bundle?
     ): View? {
         _fragBinding = FragmentListBinding.inflate(inflater, container, false)
         val root = fragBinding.root
@@ -56,6 +56,7 @@ class ListFragment :  Fragment() , ProduceClickListener {
                 checkSwipeRefresh()
             }
         })
+
 
 
         setSwipeRefresh()
@@ -82,7 +83,7 @@ class ListFragment :  Fragment() , ProduceClickListener {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return NavigationUI.onNavDestinationSelected(item,
-            requireView().findNavController()) || super.onOptionsItemSelected(item)
+                requireView().findNavController()) || super.onOptionsItemSelected(item)
     }
 
     private fun render(producesList: ArrayList<ProduceModel>) {
@@ -95,7 +96,8 @@ class ListFragment :  Fragment() , ProduceClickListener {
             fragBinding.producesNotFound.visibility = View.GONE
         }
     }
-    override fun onProduceClick(produce: ProduceModel){
+
+    override fun onProduceClick(produce: ProduceModel) {
         val action = ListFragmentDirections.actionListFragmentToProduceDetailFragment(produce._id)
         findNavController().navigate(action)
     }
@@ -103,7 +105,7 @@ class ListFragment :  Fragment() , ProduceClickListener {
     fun setSwipeRefresh() {
         fragBinding.swiperefresh.setOnRefreshListener {
             fragBinding.swiperefresh.isRefreshing = true
-         showLoader(loader,"Downloading Produce")
+            showLoader(loader,"Downloading Produces")
             listViewModel.load()
         }
     }

@@ -5,6 +5,7 @@ import android.widget.Toast
 import androidx.fragment.app.FragmentActivity
 import com.wit.farmersmarketredo.R
 
+
 fun createLoader(activity: FragmentActivity) : AlertDialog {
     val loaderBuilder = AlertDialog.Builder(activity)
         .setCancelable(true) // 'false' if you want user to wait

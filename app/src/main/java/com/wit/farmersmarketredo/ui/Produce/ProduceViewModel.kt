@@ -1,4 +1,4 @@
-package com.wit.farmersmarketredo.ui.addProduce
+package com.wit.farmersmarketredo.ui.Produce
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -6,7 +6,8 @@ import androidx.lifecycle.ViewModel
 import com.wit.farmersmarketredo.models.ProduceManager
 import com.wit.farmersmarketredo.models.ProduceModel
 
-class AddProduceViewModel : ViewModel() {
+
+class ProduceViewModel : ViewModel() {
 
     private val status = MutableLiveData<Boolean>()
 

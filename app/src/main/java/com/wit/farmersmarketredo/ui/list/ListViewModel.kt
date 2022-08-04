@@ -5,11 +5,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.wit.farmersmarketredo.models.ProduceManager
 import com.wit.farmersmarketredo.models.ProduceModel
+
 import timber.log.Timber
 import java.lang.Exception
 
 class ListViewModel : ViewModel() {
-
 
     private val producesList =
         MutableLiveData<List<ProduceModel>>()
@@ -17,9 +17,8 @@ class ListViewModel : ViewModel() {
     val observableProducesList: LiveData<List<ProduceModel>>
         get() = producesList
 
-    init {
-        load()
-    }
+    init { load() }
+
     fun load() {
         try {
             ProduceManager.findAll(producesList)
@@ -40,3 +39,4 @@ class ListViewModel : ViewModel() {
         }
     }
 }
+

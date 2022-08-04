@@ -13,7 +13,7 @@
     <string name="defaultMethod">N/A</string>
     <string name="enter_amount">Enter Amount</string>
 
-    <string name="action_addproduce">AddProduce</string>
+    <string name="action_produce">AddProduce</string>
     <string name="action_list">List</string>
     <string name="total_produce">$%d</string>
 

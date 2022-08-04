@@ -1,4 +1,4 @@
-package com.wit.farmersmarketredo.ui.addProduce
+package com.wit.farmersmarketredo.ui.Produce
 
 import android.os.Bundle
 import android.view.*
@@ -8,41 +8,35 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.wit.farmersmarketredo.R
-import com.wit.farmersmarketredo.databinding.FragmentAddProduceBinding
-import com.wit.farmersmarketredo.main.FarmersApp
+import com.wit.farmersmarketredo.databinding.FragmentProduceBinding
 import com.wit.farmersmarketredo.models.ProduceModel
 import com.wit.farmersmarketredo.ui.list.ListViewModel
 
-class AddProduceFragment :Fragment() {
 
-    //lateinit var app: FarmersApp
+class ProduceFragment : Fragment() {
+
     var totalProduce = 0
-    private var _fragBinding: FragmentAddProduceBinding? = null
-
+    private var _fragBinding: FragmentProduceBinding? = null
+    // This property is only valid between onCreateView and onDestroyView.
     private val fragBinding get() = _fragBinding!!
-
-    private lateinit var addProduceViewModel: AddProduceViewModel
+    private lateinit var produceViewModel: ProduceViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-       // app = activity?.application as FarmersApp
         setHasOptionsMenu(true)
-
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-
-        _fragBinding = FragmentAddProduceBinding.inflate(inflater, container, false)
+                              savedInstanceState: Bundle?): View? {
+        _fragBinding = FragmentProduceBinding.inflate(inflater, container, false)
         val root = fragBinding.root
-        //activity?.title = getString(R.string.action_addproduce)
 
-        addProduceViewModel = ViewModelProvider(this).get(AddProduceViewModel::class.java)
-        addProduceViewModel.observableStatus.observe(viewLifecycleOwner, Observer {
+        produceViewModel = ViewModelProvider(this).get(ProduceViewModel::class.java)
+        produceViewModel.observableStatus.observe(viewLifecycleOwner, Observer {
                 status -> status?.let { render(status) }
         })
 
@@ -70,7 +64,7 @@ class AddProduceFragment :Fragment() {
         }
     }
 
-    fun setButtonListener(layout: FragmentAddProduceBinding) {
+    fun setButtonListener(layout: FragmentProduceBinding) {
         layout.produceButton.setOnClickListener {
             val amount = if (layout.paymentAmount.text.isNotEmpty())
                 layout.paymentAmount.text.toString().toInt() else layout.amountPicker.value
@@ -81,20 +75,19 @@ class AddProduceFragment :Fragment() {
                 totalProduce += amount
                 layout.totalSoFar.text = getString(R.string.total_produce,totalProduce)
                 layout.progressBar.progress = totalProduce
-                addProduceViewModel.addProduce(ProduceModel(paymentmethod = paymentmethod,amount = amount))
-
+                produceViewModel.addProduce(ProduceModel(paymentmethod = paymentmethod,amount = amount))
             }
         }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.menu_addproduce, menu)
+        inflater.inflate(R.menu.menu_produce, menu)
         super.onCreateOptionsMenu(menu, inflater)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return NavigationUI.onNavDestinationSelected(item,
-            requireView().findNavController()) || super.onOptionsItemSelected(item)
+                requireView().findNavController()) || super.onOptionsItemSelected(item)
     }
 
     override fun onDestroyView() {
@@ -104,11 +97,11 @@ class AddProduceFragment :Fragment() {
 
     override fun onResume() {
         super.onResume()
-        val listViewModel = ViewModelProvider(this).get(ListViewModel::class.java)
-        listViewModel.observableProducesList.observe(viewLifecycleOwner, Observer {
-            totalProduce = listViewModel.observableProducesList.value!!.sumOf { it.amount }
-            fragBinding.progressBar.progress = totalProduce
-            fragBinding.totalSoFar.text = getString(R.string.total_produce,totalProduce)
+        val reportViewModel = ViewModelProvider(this).get(ListViewModel::class.java)
+        reportViewModel.observableProducesList.observe(viewLifecycleOwner, Observer {
+                totalProduce = reportViewModel.observableProducesList.value!!.sumOf { it.amount }
+                fragBinding.progressBar.progress = totalProduce
+                fragBinding.totalSoFar.text = getString(R.string.total_produce,totalProduce)
         })
     }
 }

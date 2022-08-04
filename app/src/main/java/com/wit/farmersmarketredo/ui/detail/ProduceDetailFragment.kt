@@ -6,25 +6,24 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
-import com.wit.farmersmarketredo.R
-import com.wit.farmersmarketredo.databinding.ProduceDetailFragmentBinding
+import com.wit.farmersmarketredo.databinding.FragmentProduceDetailBinding
 import timber.log.Timber
 
+
 class ProduceDetailFragment : Fragment() {
+
     private lateinit var detailViewModel: ProduceDetailViewModel
     private val args by navArgs<ProduceDetailFragmentArgs>()
-    private var _fragBinding: ProduceDetailFragmentBinding? = null
+    private var _fragBinding: FragmentProduceDetailBinding? = null
     private val fragBinding get() = _fragBinding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+                            savedInstanceState: Bundle?
     ): View? {
-
-        _fragBinding = ProduceDetailFragmentBinding.inflate(inflater, container, false)
+        _fragBinding = FragmentProduceDetailBinding.inflate(inflater, container, false)
         val root = fragBinding.root
 
         detailViewModel = ViewModelProvider(this).get(ProduceDetailViewModel::class.java)
@@ -33,7 +32,6 @@ class ProduceDetailFragment : Fragment() {
     }
 
     private fun render() {
-
         fragBinding.editMessage.setText("A Message")
         fragBinding.editUpvotes.setText("0")
         fragBinding.producevm = detailViewModel
@@ -43,6 +41,7 @@ class ProduceDetailFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         detailViewModel.getProduce(args.produceid)
+
     }
 
     override fun onDestroyView() {
