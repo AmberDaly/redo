@@ -4,14 +4,12 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/amber/AndroidStudioProjects/FarmersMarketredo/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
-        <entry key="..\:/Users/amber/AndroidStudioProjects/FarmersMarketredo/app/src/main/res/drawable-v24/ic_swipe_edit.xml" value="0.1" />
         <entry key="..\:/Users/amber/AndroidStudioProjects/FarmersMarketredo/app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.1" />
         <entry key="..\:/Users/amber/AndroidStudioProjects/FarmersMarketredo/app/src/main/res/drawable/ic_baseline_format_list_numbered_24.xml" value="0.1" />
         <entry key="..\:/Users/amber/AndroidStudioProjects/FarmersMarketredo/app/src/main/res/drawable/ic_baseline_info_24.xml" value="0.1" />
         <entry key="..\:/Users/amber/AndroidStudioProjects/FarmersMarketredo/app/src/main/res/drawable/ic_baseline_send_24.xml" value="0.1" />
         <entry key="..\:/Users/amber/AndroidStudioProjects/FarmersMarketredo/app/src/main/res/drawable/ic_baseline_share_24.xml" value="0.1" />
         <entry key="..\:/Users/amber/AndroidStudioProjects/FarmersMarketredo/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
-        <entry key="..\:/Users/amber/AndroidStudioProjects/FarmersMarketredo/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.1" />
         <entry key="..\:/Users/amber/AndroidStudioProjects/FarmersMarketredo/app/src/main/res/drawable/ic_menu_aboutus.xml" value="0.1" />
         <entry key="..\:/Users/amber/AndroidStudioProjects/FarmersMarketredo/app/src/main/res/drawable/side_nav_bar.xml" value="0.2255" />
         <entry key="..\:/Users/amber/AndroidStudioProjects/FarmersMarketredo/app/src/main/res/layout/activity_home.xml" value="0.14351851851851852" />
@@ -22,16 +20,13 @@
         <entry key="..\:/Users/amber/AndroidStudioProjects/FarmersMarketredo/app/src/main/res/layout/content_home.xml" value="0.30701754385964913" />
         <entry key="..\:/Users/amber/AndroidStudioProjects/FarmersMarketredo/app/src/main/res/layout/fragment_about.xml" value="0.1" />
         <entry key="..\:/Users/amber/AndroidStudioProjects/FarmersMarketredo/app/src/main/res/layout/fragment_add_produce.xml" value="0.14351851851851852" />
-        <entry key="..\:/Users/amber/AndroidStudioProjects/FarmersMarketredo/app/src/main/res/layout/fragment_donate.xml" value="0.11676798378926039" />
         <entry key="..\:/Users/amber/AndroidStudioProjects/FarmersMarketredo/app/src/main/res/layout/fragment_list.xml" value="0.14351851851851852" />
-        <entry key="..\:/Users/amber/AndroidStudioProjects/FarmersMarketredo/app/src/main/res/layout/fragment_produce_detail.xml" value="0.11676798378926039" />
         <entry key="..\:/Users/amber/AndroidStudioProjects/FarmersMarketredo/app/src/main/res/layout/home.xml" value="0.14" />
         <entry key="..\:/Users/amber/AndroidStudioProjects/FarmersMarketredo/app/src/main/res/layout/loading.xml" value="0.1" />
         <entry key="..\:/Users/amber/AndroidStudioProjects/FarmersMarketredo/app/src/main/res/layout/nav_header.xml" value="0.3473731884057971" />
         <entry key="..\:/Users/amber/AndroidStudioProjects/FarmersMarketredo/app/src/main/res/layout/produce_detail_fragment.xml" value="0.1" />
         <entry key="..\:/Users/amber/AndroidStudioProjects/FarmersMarketredo/app/src/main/res/menu/menu_addproduce.xml" value="0.2" />
         <entry key="..\:/Users/amber/AndroidStudioProjects/FarmersMarketredo/app/src/main/res/menu/menu_list.xml" value="0.2" />
-        <entry key="..\:/Users/amber/AndroidStudioProjects/FarmersMarketredo/app/src/main/res/menu/menu_produce.xml" value="0.19814814814814816" />
         <entry key="..\:/Users/amber/AndroidStudioProjects/FarmersMarketredo/app/src/main/res/menu/nav_drawer_menu.xml" value="0.33" />
         <entry key="..\:/Users/amber/AndroidStudioProjects/FarmersMarketredo/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
       </map>

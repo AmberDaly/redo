@@ -10,7 +10,6 @@ import androidx.navigation.ui.*
 import com.wit.farmersmarketredo.R
 import com.wit.farmersmarketredo.databinding.HomeBinding
 
-
 class Home : AppCompatActivity() {
 
     private lateinit var drawerLayout: DrawerLayout
@@ -27,19 +26,16 @@ class Home : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         val navHostFragment = supportFragmentManager.
+
         findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
 
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-
         appBarConfiguration = AppBarConfiguration(setOf(
-            R.id.produceFragment, R.id.listFragment, R.id.aboutFragment), drawerLayout)
+            R.id.addProduceFragment, R.id.listFragment, R.id.aboutusFragment), drawerLayout)
         setupActionBarWithNavController(navController, appBarConfiguration)
 
         val navView = homeBinding.navView
         navView.setupWithNavController(navController)
-
 
     }
 

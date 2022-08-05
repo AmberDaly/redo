@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/addProduceFragment"
-        android:name="com.wit.farmersmarketredo.ui.Produce.ProduceFragment"
+        android:name="com.wit.farmersmarketredo.ui.addProduce.AddProduceFragment"
         android:label="@string/action_addproduce"
-        tools:layout="@layout/fragment_produce" >
+        tools:layout="@layout/fragment_add_produce" >
         <action
             android:id="@+id/action_addProduceFragment_to_listFragment"
             app:destination="@id/listFragment"
@@ -39,12 +39,12 @@
         android:id="@+id/produceDetailFragment"
         android:name="com.wit.farmersmarketredo.ui.detail.ProduceDetailFragment"
         android:label="produce_detail_fragment"
-        tools:layout="@layout/fragment_produce_detail" >
+        tools:layout="@layout/produce_detail_fragment" >
         <action
             android:id="@+id/action_produceDetailFragment_to_listFragment"
             app:destination="@id/listFragment" />
         <argument
             android:name="produceid"
-            app:argType="string" />
+            app:argType="long" />
     </fragment>
 </navigation>

@@ -1,6 +1,5 @@
 package com.wit.farmersmarketredo.api
 
-
 import com.wit.farmersmarketredo.models.ProduceModel
 import retrofit2.Call
 import retrofit2.http.*
@@ -17,10 +16,10 @@ interface ProduceService {
     fun delete(@Path("id") id: String): Call<ProduceWrapper>
 
     @POST("/produces")
-    fun post(@Body produce: ProduceModel): Call<ProduceWrapper>
+    fun post(@Body donation: ProduceModel): Call<ProduceWrapper>
 
     @PUT("/produces/{id}")
     fun put(@Path("id") id: String,
-            @Body produce: ProduceModel
+            @Body donation: ProduceModel
     ): Call<ProduceWrapper>
 }

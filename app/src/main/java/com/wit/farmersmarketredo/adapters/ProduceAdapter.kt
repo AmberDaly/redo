@@ -12,8 +12,8 @@ interface ProduceClickListener {
     fun onProduceClick(produce: ProduceModel)
 }
 
-class ProduceAdapter constructor(private var produces: ArrayList<ProduceModel>,
-                                  private val listener: ProduceClickListener)
+class ProduceAdapter constructor(private var produces: List<ProduceModel>,
+                                 private val listener: ProduceClickListener)
     : RecyclerView.Adapter<ProduceAdapter.MainHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
@@ -28,21 +28,18 @@ class ProduceAdapter constructor(private var produces: ArrayList<ProduceModel>,
         holder.bind(produce,listener)
     }
 
-    fun removeAt(position: Int) {
-        produces.removeAt(position)
-        notifyItemRemoved(position)
-    }
-
     override fun getItemCount(): Int = produces.size
 
-    inner class MainHolder(val binding : CardProduceBinding) :
-                            RecyclerView.ViewHolder(binding.root) {
+    inner class MainHolder(val binding : CardProduceBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(produce: ProduceModel, listener: ProduceClickListener) {
-            binding.root.tag = produce._id
+            //binding.paymentamount.text = donation.amount.toString()
+            //binding.paymentmethod.text = donation.paymentmethod
+
             binding.produce = produce
             binding.imageIcon.setImageResource(R.mipmap.ic_launcher_round)
             binding.root.setOnClickListener { listener.onProduceClick(produce) }
+            //Include this call to force the bindings to happen immediately
             binding.executePendingBindings()
         }
     }

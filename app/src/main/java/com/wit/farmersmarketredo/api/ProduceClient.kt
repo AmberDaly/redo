@@ -7,24 +7,23 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 object ProduceClient {
+    val serviceURL = "https://donationweb-hdip-server.herokuapp.com"
 
-        val serviceURL = "https://donationweb-hdip-server.herokuapp.com"
+    fun getApi() : ProduceService {
 
-        fun getApi() : ProduceService {
+        val gson = GsonBuilder().create()
 
-            val gson = GsonBuilder().create()
+        val okHttpClient = OkHttpClient.Builder()
+            .connectTimeout(30, TimeUnit.SECONDS)
+            .writeTimeout(30, TimeUnit.SECONDS)
+            .readTimeout(30, TimeUnit.SECONDS)
+            .build()
 
-            val okHttpClient = OkHttpClient.Builder()
-                .connectTimeout(30, TimeUnit.SECONDS)
-                .writeTimeout(30, TimeUnit.SECONDS)
-                .readTimeout(30, TimeUnit.SECONDS)
-                .build()
-
-            val apiInterface = Retrofit.Builder()
-                .baseUrl(serviceURL)
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .client(okHttpClient)
-                .build()
-            return apiInterface.create(ProduceService::class.java)
-        }
+        val apiInterface = Retrofit.Builder()
+            .baseUrl(serviceURL)
+            .addConverterFactory(GsonConverterFactory.create(gson))
+            .client(okHttpClient)
+            .build()
+        return apiInterface.create(ProduceService::class.java)
     }
+}

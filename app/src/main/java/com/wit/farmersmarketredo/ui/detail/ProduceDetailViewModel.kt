@@ -6,15 +6,13 @@ import androidx.lifecycle.ViewModel
 import com.wit.farmersmarketredo.models.ProduceManager
 import com.wit.farmersmarketredo.models.ProduceModel
 
-
 class ProduceDetailViewModel : ViewModel() {
     private val produce = MutableLiveData<ProduceModel>()
 
     val observableProduce: LiveData<ProduceModel>
         get() = produce
 
-    fun getProduce(id: String) {
+    fun getProduce(id: Long) {
         produce.value = ProduceManager.findById(id)
     }
 }
-

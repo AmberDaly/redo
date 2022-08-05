@@ -5,7 +5,6 @@ import android.widget.Toast
 import androidx.fragment.app.FragmentActivity
 import com.wit.farmersmarketredo.R
 
-
 fun createLoader(activity: FragmentActivity) : AlertDialog {
     val loaderBuilder = AlertDialog.Builder(activity)
         .setCancelable(true) // 'false' if you want user to wait
@@ -32,7 +31,7 @@ fun hideLoader(loader: AlertDialog) {
 fun serviceUnavailableMessage(activity: FragmentActivity) {
     Toast.makeText(
         activity,
-        "Produce Service Unavailable. Try again later",
+        "Donation Service Unavailable. Try again later",
         Toast.LENGTH_LONG
     ).show()
 }
@@ -40,7 +39,7 @@ fun serviceUnavailableMessage(activity: FragmentActivity) {
 fun serviceAvailableMessage(activity: FragmentActivity) {
     Toast.makeText(
         activity,
-        "Produce Contacted Successfully",
+        "Donation Contacted Successfully",
         Toast.LENGTH_LONG
     ).show()
 }
