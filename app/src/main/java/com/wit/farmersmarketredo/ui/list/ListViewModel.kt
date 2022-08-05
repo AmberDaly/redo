@@ -5,13 +5,14 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.wit.farmersmarketredo.models.ProduceManager
 import com.wit.farmersmarketredo.models.ProduceModel
+import timber.log.Timber
 
 class ListViewModel : ViewModel() {
 
 
     private val producesList = MutableLiveData<List<ProduceModel>>()
 
-    val observableDonationsList: LiveData<List<ProduceModel>>
+    val observableProducesList: LiveData<List<ProduceModel>>
         get() = producesList
 
     init {
@@ -19,6 +20,12 @@ class ListViewModel : ViewModel() {
     }
 
     fun load() {
-        producesList.value = ProduceManager.findAll()
+        try {
+            ProduceManager.findAll(producesList)
+            Timber.i("Retrofit Success : $producesList.value")
+        }
+        catch (e: Exception) {
+            Timber.i("Retrofit Error : $e.message")
+        }
     }
 }

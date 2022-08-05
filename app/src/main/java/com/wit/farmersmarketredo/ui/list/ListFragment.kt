@@ -1,5 +1,6 @@
 package com.wit.farmersmarketredo.ui.list
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.*
 import android.widget.TextView
@@ -16,6 +17,9 @@ import com.wit.farmersmarketredo.adapters.ProduceClickListener
 import com.wit.farmersmarketredo.databinding.FragmentListBinding
 import com.wit.farmersmarketredo.main.FarmersApp
 import com.wit.farmersmarketredo.models.ProduceModel
+import com.wit.farmersmarketredo.utils.createLoader
+import com.wit.farmersmarketredo.utils.hideLoader
+import com.wit.farmersmarketredo.utils.showLoader
 
 class ListFragment :  Fragment() , ProduceClickListener {
 
@@ -23,6 +27,7 @@ class ListFragment :  Fragment() , ProduceClickListener {
     private var _fragBinding: FragmentListBinding? = null
     private val fragBinding get() = _fragBinding!!
     private lateinit var listViewModel: ListViewModel
+    lateinit var loader : AlertDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,16 +40,20 @@ class ListFragment :  Fragment() , ProduceClickListener {
     ): View? {
         _fragBinding = FragmentListBinding.inflate(inflater, container, false)
         val root = fragBinding.root
+        loader = createLoader(requireActivity())
 
         fragBinding.recyclerView.layoutManager = LinearLayoutManager(activity)
 
         listViewModel = ViewModelProvider(this).get(ListViewModel::class.java)
-        listViewModel.observableDonationsList.observe(viewLifecycleOwner, Observer {
+        showLoader(loader,"Downloading Donations")
+        listViewModel.observableProducesList.observe(viewLifecycleOwner, Observer {
                 donations ->
-            donations?.let { render(donations) }
+            donations?.let { render(donations)
+                hideLoader(loader)}
+            checkSwipeRefresh()
         })
 
-
+        setSwipeRefresh()
         return root
     }
 
@@ -75,6 +84,19 @@ class ListFragment :  Fragment() , ProduceClickListener {
     override fun onResume() {
         super.onResume()
         listViewModel.load()
+    }
+    fun setSwipeRefresh() {
+        fragBinding.swiperefresh.setOnRefreshListener {
+            fragBinding.swiperefresh.isRefreshing = true
+            showLoader(loader,"Downloading Donations")
+            //Retrieve Donation List again here
+
+        }
+    }
+
+    fun checkSwipeRefresh() {
+        if (fragBinding.swiperefresh.isRefreshing)
+            fragBinding.swiperefresh.isRefreshing = false
     }
 
     override fun onDestroyView() {
