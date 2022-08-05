@@ -12,7 +12,7 @@ class ProduceDetailViewModel : ViewModel() {
     val observableProduce: LiveData<ProduceModel>
         get() = produce
 
-    fun getProduce(id: Long) {
+    fun getProduce(id: String) {
         produce.value = ProduceManager.findById(id)
     }
 }

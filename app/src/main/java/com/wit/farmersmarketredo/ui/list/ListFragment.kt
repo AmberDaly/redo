@@ -10,13 +10,16 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.wit.farmersmarketredo.R
 import com.wit.farmersmarketredo.adapters.ProduceAdapter
 import com.wit.farmersmarketredo.adapters.ProduceClickListener
 import com.wit.farmersmarketredo.databinding.FragmentListBinding
 import com.wit.farmersmarketredo.main.FarmersApp
 import com.wit.farmersmarketredo.models.ProduceModel
+import com.wit.farmersmarketredo.utils.SwipeToDeleteCallback
 import com.wit.farmersmarketredo.utils.createLoader
 import com.wit.farmersmarketredo.utils.hideLoader
 import com.wit.farmersmarketredo.utils.showLoader
@@ -38,7 +41,8 @@ class ListFragment :  Fragment() , ProduceClickListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _fragBinding = FragmentListBinding.inflate(inflater, container, false)
+        _fragBinding = FragmentListBinding.inflate(
+            inflater, container, false)
         val root = fragBinding.root
         loader = createLoader(requireActivity())
 
@@ -48,12 +52,24 @@ class ListFragment :  Fragment() , ProduceClickListener {
         showLoader(loader,"Downloading Donations")
         listViewModel.observableProducesList.observe(viewLifecycleOwner, Observer {
                 donations ->
-            donations?.let { render(donations)
+            donations?.let { render(donations as ArrayList<ProduceModel>)
                 hideLoader(loader)}
             checkSwipeRefresh()
         })
 
         setSwipeRefresh()
+        val swipeDeleteHandler = object : SwipeToDeleteCallback(requireContext()) {
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                showLoader(loader,"Deleting Produce")
+                val adapter = fragBinding.recyclerView.adapter as ProduceAdapter
+                adapter.removeAt(viewHolder.adapterPosition)
+                listViewModel.delete(viewHolder.itemView.tag as String)
+                hideLoader(loader)
+
+            }
+        }
+        val itemTouchDeleteHelper = ItemTouchHelper(swipeDeleteHandler)
+        itemTouchDeleteHelper.attachToRecyclerView(fragBinding.recyclerView)
         return root
     }
 
@@ -67,7 +83,7 @@ class ListFragment :  Fragment() , ProduceClickListener {
             requireView().findNavController()) || super.onOptionsItemSelected(item)
     }
 
-    private fun render(donationsList: List<ProduceModel>) {
+    private fun render(donationsList: ArrayList<ProduceModel>) {
         fragBinding.recyclerView.adapter = ProduceAdapter(donationsList,this)
         if (donationsList.isEmpty()) {
             fragBinding.recyclerView.visibility = View.GONE
@@ -78,7 +94,7 @@ class ListFragment :  Fragment() , ProduceClickListener {
         }
     }
     override fun onProduceClick(produce: ProduceModel){
-        val action = ListFragmentDirections.actionListFragmentToProduceDetailFragment(produce.id)
+        val action = ListFragmentDirections.actionListFragmentToProduceDetailFragment(produce._id)
         findNavController().navigate(action)
     }
     override fun onResume() {

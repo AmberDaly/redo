@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 
 interface ProduceStore {
     fun findAll(producesList: MutableLiveData<List<ProduceModel>>)
-    fun findById(id: Long) : ProduceModel?
+    fun findById(id: String) : ProduceModel?
     fun create(produce: ProduceModel)
+    fun delete(id: String)
 }

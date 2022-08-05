@@ -28,4 +28,13 @@ class ListViewModel : ViewModel() {
             Timber.i("Retrofit Error : $e.message")
         }
     }
+    fun delete(id: String) {
+        try {
+            ProduceManager.delete(id)
+            Timber.i("Retrofit Delete Success")
+        }
+        catch (e: java.lang.Exception) {
+            Timber.i("Retrofit Delete Error : $e.message")
+        }
+    }
 }

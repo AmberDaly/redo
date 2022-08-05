@@ -34,8 +34,8 @@ object ProduceManager : ProduceStore {
         })
     }
 
-    override fun findById(id:Long) : ProduceModel? {
-        val foundDonation: ProduceModel? = produces.find { it.id == id }
+    override fun findById(id:String) : ProduceModel? {
+        val foundDonation: ProduceModel? = produces.find { it._id == id }
         return foundDonation
     }
 
@@ -56,6 +56,25 @@ object ProduceManager : ProduceStore {
 
             override fun onFailure(call: Call<ProduceWrapper>, t: Throwable) {
                 Timber.i("Retrofit Error : $t.message")
+            }
+        })
+    }
+    override fun delete(id: String) {
+        val call = ProduceClient.getApi().delete(id)
+
+        call.enqueue(object : Callback<ProduceWrapper> {
+            override fun onResponse(call: Call<ProduceWrapper>,
+                                    response: Response<ProduceWrapper>
+            ) {
+                val produceWrapper = response.body()
+                if (produceWrapper != null) {
+                    Timber.i("Retrofit Delete ${produceWrapper.message}")
+                    Timber.i("Retrofit Delete ${produceWrapper.data.toString()}")
+                }
+            }
+
+            override fun onFailure(call: Call<ProduceWrapper>, t: Throwable) {
+                Timber.i("Retrofit Delete Error : $t.message")
             }
         })
     }

@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 object ProduceClient {
-    val serviceURL = "https://donationweb-hdip-server.herokuapp.com"
+    val serviceURL = "mongodb+srv://Amber:<LLEPXB9e7>@cluster0.ssnasco.mongodb.net/?retryWrites=true&w=majority"
 
     fun getApi() : ProduceService {
 
