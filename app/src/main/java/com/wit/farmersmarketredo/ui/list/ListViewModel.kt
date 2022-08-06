@@ -3,7 +3,8 @@ package com.wit.farmersmarketredo.ui.list
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.wit.farmersmarketredo.models.ProduceManager
+import com.google.firebase.auth.FirebaseUser
+import com.wit.farmersmarketredo.firebase.FirebaseDBManager
 import com.wit.farmersmarketredo.models.ProduceModel
 import timber.log.Timber
 
@@ -15,25 +16,27 @@ class ListViewModel : ViewModel() {
     val observableProducesList: LiveData<List<ProduceModel>>
         get() = producesList
 
+    var liveFirebaseUser = MutableLiveData<FirebaseUser>()
+
     init {
         load()
     }
 
     fun load() {
         try {
-            ProduceManager.findAll(producesList)
-            Timber.i("Retrofit Success : $producesList.value")
+            FirebaseDBManager.findAll(liveFirebaseUser.value?.uid!!,producesList)
+            Timber.i("List Load Success : ${producesList.value.toString()}")
         }
         catch (e: Exception) {
-            Timber.i("Retrofit Error : $e.message")
+            Timber.i("Retrofit Load Error : $e.message")
         }
     }
-    fun delete(id: String) {
+    fun delete(userid: String, id: String) {
         try {
-            ProduceManager.delete(id)
+            FirebaseDBManager.delete(userid,id)
             Timber.i("Retrofit Delete Success")
         }
-        catch (e: java.lang.Exception) {
+        catch (e: Exception) {
             Timber.i("Retrofit Delete Error : $e.message")
         }
     }

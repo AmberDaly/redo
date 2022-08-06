@@ -1,13 +1,30 @@
 package com.wit.farmersmarketredo.models
 
 import android.os.Parcelable
-import com.google.gson.annotations.SerializedName
+import com.google.firebase.database.Exclude
+import com.google.firebase.database.IgnoreExtraProperties
 import kotlinx.parcelize.Parcelize
 
-
+@IgnoreExtraProperties
 @Parcelize
-data class ProduceModel(var _id: String = "N/A",
-                        @SerializedName("paymenttype")
-                        val paymenttype: String = "N/A",
-                        val message: String = "n/a",
-                        val amount: Int = 0) : Parcelable
+data class ProduceModel(
+    var uid: String? = "",
+    var paymenttype: String = "N/A",
+    var amount: Int = 0,
+    var message: String = "a message",
+    var upvotes: Int = 0,
+    var email: String? = "joe@bloggs.com")
+    : Parcelable
+{
+    @Exclude
+    fun toMap(): Map<String, Any?> {
+        return mapOf(
+            "uid" to uid,
+            "paymenttype" to paymenttype,
+            "amount" to amount,
+            "message" to message,
+            "upvotes" to upvotes,
+            "email" to email
+        )
+    }
+}

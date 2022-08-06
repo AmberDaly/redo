@@ -35,7 +35,7 @@
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <TextView
-        android:id="@+id/donationsNotFound"
+        android:id="@+id/produceNotFound"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/produceNotFound"
@@ -46,5 +46,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Donations not Found." />
+        tools:text="Produces not Found." />
 </androidx.constraintlayout.widget.ConstraintLayout>

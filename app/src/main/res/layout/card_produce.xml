@@ -17,7 +17,7 @@
     android:elevation="24dp">
 
     <RelativeLayout
-        android:id="@+id/cardDonation"
+        android:id="@+id/cardProduce"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16dp">
@@ -45,7 +45,7 @@
             tools:text="€1000" />
 
         <TextView
-            android:id="@+id/paymentmethod"
+            android:id="@+id/paymenttype"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
@@ -64,7 +64,7 @@
             android:layout_marginStart="25dp"
             android:layout_marginTop="2dp"
             android:layout_marginEnd="5dp"
-            android:layout_toEndOf="@id/paymentmethod"
+            android:layout_toEndOf="@id/paymenttype"
             app:srcCompat="@android:drawable/star_big_off" />
 
     </RelativeLayout>

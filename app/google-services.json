@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "664142817460",
+    "firebase_url": "https://farmersmarketredo-default-rtdb.firebaseio.com",
+    "project_id": "farmersmarketredo",
+    "storage_bucket": "farmersmarketredo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:664142817460:android:efe2727a55db59fd4a0fe1",
+        "android_client_info": {
+          "package_name": "com.wit.farmersmarketredo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "664142817460-boeubnshjpsrji9otm0qngue4pgbc04d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCh3n9T4niqYtq-H8jb7qHeGx1dBGeTrxQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "664142817460-boeubnshjpsrji9otm0qngue4pgbc04d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -7,7 +7,6 @@ import com.wit.farmersmarketredo.R
 import com.wit.farmersmarketredo.databinding.CardProduceBinding
 import com.wit.farmersmarketredo.models.ProduceModel
 
-
 interface ProduceClickListener {
     fun onProduceClick(produce: ProduceModel)
 }
@@ -27,20 +26,22 @@ class ProduceAdapter constructor(private var produces: ArrayList<ProduceModel>,
         val produce = produces[holder.adapterPosition]
         holder.bind(produce,listener)
     }
+
     fun removeAt(position: Int) {
         produces.removeAt(position)
         notifyItemRemoved(position)
     }
+
     override fun getItemCount(): Int = produces.size
 
-    inner class MainHolder(val binding : CardProduceBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class MainHolder(val binding : CardProduceBinding) :
+                            RecyclerView.ViewHolder(binding.root) {
 
         fun bind(produce: ProduceModel, listener: ProduceClickListener) {
-            binding.root.tag = produce._id
+            binding.root.tag = produce
             binding.produce = produce
             binding.imageIcon.setImageResource(R.mipmap.ic_launcher_round)
             binding.root.setOnClickListener { listener.onProduceClick(produce) }
-            //Include this call to force the bindings to happen immediately
             binding.executePendingBindings()
         }
     }
