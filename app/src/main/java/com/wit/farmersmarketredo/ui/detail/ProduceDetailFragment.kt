@@ -20,9 +20,9 @@ class ProduceDetailFragment : Fragment() {
     private lateinit var detailViewModel: ProduceDetailViewModel
     private val args by navArgs<ProduceDetailFragmentArgs>()
     private var _fragBinding: ProduceDetailFragmentBinding? = null
+    private val fragBinding get() = _fragBinding!!
     private val loggedInViewModel : LoggedInViewModel by activityViewModels()
     private val listViewModel : ListViewModel by activityViewModels()
-    private val fragBinding get() = _fragBinding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -64,7 +64,8 @@ class ProduceDetailFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        detailViewModel.getProduce(loggedInViewModel.liveFirebaseUser.value?.uid!!,args.produceid)
+        detailViewModel.getProduce(loggedInViewModel.liveFirebaseUser.value?.uid!!,
+            args.produceid)
     }
 
     override fun onDestroyView() {

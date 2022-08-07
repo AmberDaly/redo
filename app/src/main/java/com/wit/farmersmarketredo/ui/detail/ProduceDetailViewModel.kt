@@ -18,7 +18,8 @@ class ProduceDetailViewModel : ViewModel() {
     fun getProduce(userid:String, id: String) {
         try {
             FirebaseDBManager.findById(userid, id, produce)
-            Timber.i("Detail getProduce() Success : ${produce.value.toString()}")
+            Timber.i("Detail getProduce() Success : ${
+                produce.value.toString()}")
         }
         catch (e: Exception) {
             Timber.i("Detail getProduce() Error : $e.message")

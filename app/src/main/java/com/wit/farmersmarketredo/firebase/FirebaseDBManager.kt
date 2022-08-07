@@ -14,7 +14,25 @@ object FirebaseDBManager : ProduceStore {
     var database: DatabaseReference = FirebaseDatabase.getInstance().reference
 
     override fun findAll(producesList: MutableLiveData<List<ProduceModel>>) {
-        TODO("Not yet implemented")
+        database.child("produces")
+            .addValueEventListener(object : ValueEventListener {
+                override fun onCancelled(error: DatabaseError) {
+                    Timber.i("Firebase Produce error : ${error.message}")
+                }
+
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val localList = ArrayList<ProduceModel>()
+                    val children = snapshot.children
+                    children.forEach {
+                        val produce = it.getValue(ProduceModel::class.java)
+                        localList.add(produce!!)
+                    }
+                    database.child("produces")
+                        .removeEventListener(this)
+
+                    producesList.value = localList
+                }
+            })
     }
 
     override fun findAll(userid: String, producesList: MutableLiveData<List<ProduceModel>>) {
@@ -88,5 +106,26 @@ object FirebaseDBManager : ProduceStore {
         childUpdate["user-produces/$userid/$produceid"] = produceValues
 
         database.updateChildren(childUpdate)
+    }
+
+    fun updateImageRef(userid: String,imageUri: String) {
+
+        val userProduces = database.child("user-produces").child(userid)
+        val allProduces = database.child("produces")
+
+        userProduces.addListenerForSingleValueEvent(
+            object : ValueEventListener {
+                override fun onCancelled(error: DatabaseError) {}
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    snapshot.children.forEach {
+                        //Update Users imageUri
+                        it.ref.child("profilepic").setValue(imageUri)
+                        //Update all donations that match 'it'
+                        val produce = it.getValue(ProduceModel::class.java)
+                        allProduces.child(produce!!.uid!!)
+                            .child("profilepic").setValue(imageUri)
+                    }
+                }
+            })
     }
 }

@@ -11,33 +11,50 @@ import timber.log.Timber
 class ListViewModel : ViewModel() {
 
 
-    private val producesList = MutableLiveData<List<ProduceModel>>()
+    private val producesList =
+        MutableLiveData<List<ProduceModel>>()
 
     val observableProducesList: LiveData<List<ProduceModel>>
         get() = producesList
 
     var liveFirebaseUser = MutableLiveData<FirebaseUser>()
 
-    init {
-        load()
-    }
+    var readOnly = MutableLiveData(false)
+
+    var searchResults = ArrayList<ProduceModel>()
+
+    init { load() }
 
     fun load() {
         try {
-            FirebaseDBManager.findAll(liveFirebaseUser.value?.uid!!,producesList)
-            Timber.i("List Load Success : ${producesList.value.toString()}")
+            readOnly.value = false
+            FirebaseDBManager.findAll(liveFirebaseUser.value?.uid!!,
+                producesList)
+            Timber.i("Report Load Success : ${producesList.value.toString()}")
         }
         catch (e: Exception) {
-            Timber.i("Retrofit Load Error : $e.message")
+            Timber.i("Report Load Error : $e.message")
         }
     }
+
+    fun loadAll() {
+        try {
+            readOnly.value = true
+            FirebaseDBManager.findAll(producesList)
+            Timber.i("Report LoadAll Success : ${producesList.value.toString()}")
+        }
+        catch (e: java.lang.Exception) {
+            Timber.i("Report LoadAll Error : $e.message")
+        }
+    }
+
     fun delete(userid: String, id: String) {
         try {
             FirebaseDBManager.delete(userid,id)
-            Timber.i("Retrofit Delete Success")
+            Timber.i("Report Delete Success")
         }
         catch (e: Exception) {
-            Timber.i("Retrofit Delete Error : $e.message")
+            Timber.i("Report Delete Error : $e.message")
         }
     }
 }

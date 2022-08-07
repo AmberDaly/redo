@@ -3,6 +3,7 @@ package com.wit.farmersmarketredo.ui.list
 import android.app.AlertDialog
 import android.os.Bundle
 import android.view.*
+import androidx.appcompat.widget.SwitchCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
@@ -24,7 +25,6 @@ import com.wit.farmersmarketredo.utils.*
 
 class ListFragment :  Fragment() , ProduceClickListener {
 
-//    lateinit var app: FarmersApp
     private var _fragBinding: FragmentListBinding? = null
     private val fragBinding get() = _fragBinding!!
     lateinit var loader : AlertDialog
@@ -82,6 +82,16 @@ class ListFragment :  Fragment() , ProduceClickListener {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menu_list, menu)
+
+        val item = menu.findItem(R.id.toggleProduces) as MenuItem
+        item.setActionView(R.layout.togglebutton_layout)
+        val toggleProduces: SwitchCompat = item.actionView.findViewById(R.id.toggleButton)
+        toggleProduces.isChecked = false
+
+        toggleProduces.setOnCheckedChangeListener { buttonView, isChecked ->
+            if (isChecked) listViewModel.loadAll()
+            else listViewModel.load()
+        }
         super.onCreateOptionsMenu(menu, inflater)
     }
 
@@ -91,7 +101,8 @@ class ListFragment :  Fragment() , ProduceClickListener {
     }
 
     private fun render(producesList: ArrayList<ProduceModel>) {
-        fragBinding.recyclerView.adapter = ProduceAdapter(producesList,this)
+        fragBinding.recyclerView.adapter = ProduceAdapter(producesList,this,
+                                    listViewModel.readOnly.value!!)
         if (producesList.isEmpty()) {
             fragBinding.recyclerView.visibility = View.GONE
             fragBinding.produceNotFound.visibility = View.VISIBLE
@@ -102,13 +113,18 @@ class ListFragment :  Fragment() , ProduceClickListener {
     }
     override fun onProduceClick(produce: ProduceModel){
         val action = ListFragmentDirections.actionListFragmentToProduceDetailFragment(produce.uid!!)
+
+        if(!listViewModel.readOnly.value!!)
         findNavController().navigate(action)
     }
 
-    fun setSwipeRefresh() {
+   private fun setSwipeRefresh() {
         fragBinding.swiperefresh.setOnRefreshListener {
             fragBinding.swiperefresh.isRefreshing = true
             showLoader(loader,"Downloading Produces")
+            if(listViewModel.readOnly.value!!)
+              listViewModel.loadAll()
+            else
            listViewModel.load()
 
         }

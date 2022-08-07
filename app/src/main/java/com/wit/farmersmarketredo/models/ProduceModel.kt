@@ -13,6 +13,7 @@ data class ProduceModel(
     var amount: Int = 0,
     var message: String = "a message",
     var upvotes: Int = 0,
+    var profilepic: String = "",
     var email: String? = "joe@bloggs.com")
     : Parcelable
 {
@@ -24,6 +25,7 @@ data class ProduceModel(
             "amount" to amount,
             "message" to message,
             "upvotes" to upvotes,
+            "profilepic" to profilepic,
             "email" to email
         )
     }
