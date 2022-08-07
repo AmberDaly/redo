@@ -1,6 +1,5 @@
 package com.wit.farmersmarketredo.firebase
 
-
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
@@ -118,9 +117,9 @@ object FirebaseDBManager : ProduceStore {
                 override fun onCancelled(error: DatabaseError) {}
                 override fun onDataChange(snapshot: DataSnapshot) {
                     snapshot.children.forEach {
-                        //Update Users imageUri
+
                         it.ref.child("profilepic").setValue(imageUri)
-                        //Update all donations that match 'it'
+
                         val produce = it.getValue(ProduceModel::class.java)
                         allProduces.child(produce!!.uid!!)
                             .child("profilepic").setValue(imageUri)

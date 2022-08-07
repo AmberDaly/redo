@@ -56,12 +56,14 @@ class ListFragment :  Fragment() , ProduceClickListener {
         })
 
         setSwipeRefresh()
+
         val swipeDeleteHandler = object : SwipeToDeleteCallback(requireContext()) {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 showLoader(loader,"Deleting Produce")
                 val adapter = fragBinding.recyclerView.adapter as ProduceAdapter
                 adapter.removeAt(viewHolder.adapterPosition)
-                listViewModel.delete(listViewModel.liveFirebaseUser.value?.uid!!,
+                listViewModel.delete(
+                    listViewModel.liveFirebaseUser.value?.uid!!,
                     (viewHolder.itemView.tag as ProduceModel).uid!!)
                 hideLoader(loader)
             }
@@ -96,8 +98,10 @@ class ListFragment :  Fragment() , ProduceClickListener {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return NavigationUI.onNavDestinationSelected(item,
-            requireView().findNavController()) || super.onOptionsItemSelected(item)
+        return NavigationUI.onNavDestinationSelected(
+            item,
+            requireView().findNavController()
+        ) || super.onOptionsItemSelected(item)
     }
 
     private fun render(producesList: ArrayList<ProduceModel>) {

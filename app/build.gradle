@@ -6,6 +6,7 @@ plugins {
     id 'androidx.navigation.safeargs'
     id 'com.google.gms.google-services'
 
+
 }
 
 android {
@@ -66,10 +67,12 @@ dependencies {
     implementation 'androidx.fragment:fragment-ktx:1.4.1'
     implementation 'com.google.firebase:firebase-database-ktx:20.0.5'
     implementation 'com.google.android.gms:play-services-auth:20.1.0'
+    implementation 'com.google.android.gms:play-services-location:20.0.0'
 
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'com.makeramen:roundedimageview:2.3.0'
     implementation 'com.google.firebase:firebase-storage-ktx:20.0.1'
+    implementation 'com.google.android.gms:play-services-maps:18.1.0'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

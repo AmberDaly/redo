@@ -84,7 +84,7 @@ class Login : AppCompatActivity() {
                             Snackbar.make(loginBinding.loginLayout, "Authentication Failed.",
                                 Snackbar.LENGTH_SHORT).show()
                         }
-                        Timber.i("DonationX Google Result $result.data")
+                        Timber.i("Farmers Market Google Result $result.data")
                     }
                     RESULT_CANCELED -> {
 

@@ -47,4 +47,13 @@
             android:name="produceid"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/mapsFragment"
+        android:name="com.wit.farmersmarketredo.ui.map.MapsFragment"
+        android:label="fragment_maps"
+        tools:layout="@layout/fragment_maps" >
+        <action
+            android:id="@+id/action_mapsFragment_to_produceDetailFragment"
+            app:destination="@id/produceDetailFragment" />
+    </fragment>
 </navigation>

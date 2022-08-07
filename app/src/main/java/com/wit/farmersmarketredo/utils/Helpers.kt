@@ -35,6 +35,7 @@ fun hideLoader(loader: AlertDialog) {
     if (loader.isShowing)
         loader.dismiss()
 }
+
 fun showImagePicker(intentLauncher : ActivityResultLauncher<Intent>) {
 
     var chooseFile = Intent(Intent.ACTION_OPEN_DOCUMENT)

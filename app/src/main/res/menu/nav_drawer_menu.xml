@@ -12,6 +12,10 @@
             android:icon="@drawable/ic_baseline_format_list_numbered_24"
             android:title="@string/action_list" />
         <item
+            android:id="@+id/mapsFragment"
+            android:icon="@drawable/ic_baseline_map_24"
+            android:title="@string/action_maps" />
+        <item
             android:id="@+id/aboutFragment"
             android:icon="@drawable/ic_baseline_info_24"
             android:title="@string/action_about" />
