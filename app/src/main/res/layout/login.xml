@@ -17,10 +17,10 @@
         <ImageView
             android:id="@+id/icon"
             style="@style/ThemeOverlay.FirebaseIcon"
-            android:layout_width="286dp"
-            android:layout_height="325dp"
+            android:layout_width="345dp"
+            android:layout_height="393dp"
             android:contentDescription="@string/desc_firebase_lockup"
-            android:src="@drawable/login_homer" />
+            android:src="@drawable/logo_transparent" />
 
         <TextView
             android:id="@+id/titleText"

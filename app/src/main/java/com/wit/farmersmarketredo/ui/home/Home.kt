@@ -131,7 +131,7 @@ class Home : AppCompatActivity() {
                     Timber.i("DX Loading Existing Default imageUri")
                     FirebaseImageManager.updateDefaultImage(
                         currentUser.uid,
-                        R.drawable.ic_launcher_homer,
+                        R.drawable.logo,
                         navHeaderBinding.navHeaderImage)
                 }
             }
