@@ -1,17 +1,20 @@
 <resources>
     <string name="app_name">FarmersMarketredo</string>
-    <string name="produceTitle">Welcome Homer</string>
-    <string name="produceSubtitle">Please Give Generously</string>
+    <string name="produceTitle">Welcome to the Farm</string>
+    <string name="produceSubtitle">Add any produce you like</string>
     <string name="produceButton">Add Produce</string>
-    <string name="paypal">PayPal</string>
-    <string name="direct">Direct</string>
-    <string name="amount">Amount</string>
+    <string name="Fruit">Fruit</string>
+    <string name="Vegetable">Vegetable</string>
+    <string name="Jam">Jam</string>
+    <string name="Bread">Bread</string>
+    <string name="Eggs">Eggs</string>
+    <string name="amount">Cost</string>
     <string name="total">Total so Far</string>
     <string name="totalSoFar">$ Total</string>
     <string name="listTitle">Produces List</string>
     <string name="defaultAmount">00</string>
     <string name="defaultMethod">N/A</string>
-    <string name="enter_amount">Enter Amount</string>
+    <string name="enter_amount">Enter Cost</string>
     <string name="action_addproduce">AddProduce</string>
     <string name="action_list">List</string>
 
@@ -33,8 +36,8 @@
 
     <string name="amt">Amount :</string>
     <string name="payment">Payment :</string>
-    <string name="message">Message :</string>
-    <string name="upvotes">UpVotes :</string>
+    <string name="message">About :</string>
+
 
     <string name="messageLoading">Please Wait while the produce is Loading...</string>
 

@@ -11,7 +11,7 @@ data class ProduceModel(
     var uid: String? = "",
     var paymenttype: String = "N/A",
     var amount: Int = 0,
-    var message: String = "a message",
+    var message: String = "Produce Details",
     var upvotes: Int = 0,
     var profilepic: String = "",
     var email: String? = "joe@bloggs.com",

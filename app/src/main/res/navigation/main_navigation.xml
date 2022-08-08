@@ -38,7 +38,7 @@
     <fragment
         android:id="@+id/produceDetailFragment"
         android:name="com.wit.farmersmarketredo.ui.detail.ProduceDetailFragment"
-        android:label="produce_detail_fragment"
+        android:label="Edit Produce"
         tools:layout="@layout/produce_detail_fragment" >
         <action
             android:id="@+id/action_produceDetailFragment_to_listFragment"
