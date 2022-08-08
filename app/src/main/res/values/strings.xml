@@ -35,8 +35,9 @@
     <string name="produceDetails">Produce Details</string>
 
     <string name="amt">Amount :</string>
-    <string name="payment">Payment :</string>
+    <string name="payment">Type :</string>
     <string name="message">About :</string>
+
 
 
     <string name="messageLoading">Please Wait while the produce is Loading...</string>
