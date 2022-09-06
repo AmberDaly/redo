@@ -11,6 +11,7 @@
             android:id="@+id/listFragment"
             android:icon="@drawable/ic_baseline_format_list_numbered_24"
             android:title="@string/action_list" />
+
         <item
             android:id="@+id/mapsFragment"
             android:icon="@drawable/ic_baseline_map_24"
@@ -19,6 +20,11 @@
             android:id="@+id/aboutFragment"
             android:icon="@drawable/ic_baseline_info_24"
             android:title="@string/action_about" />
+        <item
+            android:id="@+id/farmersFragment"
+            android:icon="@drawable/ic_baseline_rate_review_24"
+            android:title="@string/action_farmers" />
+
     </group>
 
 
