@@ -27,7 +27,7 @@ class FarmersFragment : Fragment() {
     ): View? {
         farmersViewModel =
             ViewModelProvider(this).get(FarmersViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_about, container, false)
+        val root = inflater.inflate(R.layout.fragment_farmers, container, false)
         //val textView: TextView = root.findViewById(R.id.text_slideshow)
         farmersViewModel.text.observe(viewLifecycleOwner, Observer {
             //textView.text = it

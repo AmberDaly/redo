@@ -19,8 +19,8 @@
     <string name="action_list">List</string>
 
     <string name="action_share_us">Share Our app with your Friends</string>
-    <string name="action_share">Our app is not available on the app store as of yet\n\ but we would love your help!!
-    Share this app with your friends and family\n\ by sending them to our GitHub repo at\n\ https://github.com/AmberDaly/redo </string>
+    <string name="action_share">Our app is not available on the app store as of yet but we would love your help!!\n\
+    Share this app with your friends and family by sending them to our GitHub repo at \n\ https://github.com/AmberDaly/redo </string>
     <string name="shareButton">Share</string>
     <string name="action_send">Send</string>
     <string name="group_communicate">Communicate</string>
@@ -31,7 +31,7 @@
 
     <string name="action_about">About Us</string>
     <string name="aboutus_title">Homer for President !!</string>
-    <string name="aboutus_message">Hi, Welcome to the Farmers Market App, \n\n This app was made to share fresh produce for everyone to be able to fine easily!\n\n Feel free to add you own produce to the app.</string>
+    <string name="aboutus_message">Hi, Welcome to the Farmers Market App, \n\This app was made to share fresh produce for everyone to be able to fine easily!\n\ Feel free to add you own produce to the app.</string>
 
     <string name="produceNotFound">No produce Yet...</string>
     <string name="produceError">Error : Couldn\'t Add Produce...</string>
